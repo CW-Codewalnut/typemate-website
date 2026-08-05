@@ -40,14 +40,16 @@ export function Footer() {
         </p>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-6xl items-center justify-between border-t border-edge pt-7">
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center gap-6 border-t border-edge pt-7 sm:flex-row sm:justify-between">
         <a
           href="https://www.codewalnut.com"
           target="_blank"
           rel="noreferrer"
           className="flex items-center gap-2.5 opacity-90 transition-opacity hover:opacity-100"
         >
-          <span className="text-[13px] text-muted">Built by</span>
+          <span className="whitespace-nowrap text-[13px] text-muted">
+            Built by
+          </span>
           <Image
             src="/codewalnut-logo.svg"
             alt="CodeWalnut"
