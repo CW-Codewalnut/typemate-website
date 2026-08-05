@@ -24,48 +24,23 @@ function SocialLink({
   );
 }
 
-const productLinks = [
-  { href: "#how", label: "How it works" },
-  { href: "#features", label: "Features" },
-  { href: "#languages", label: "Languages" },
-  { href: "#android", label: "Android" },
-  { href: "#download", label: "Download" },
-];
-
 export function Footer() {
   return (
     <footer className="border-t border-edge px-5 pt-14 pb-8">
-      <div className="mx-auto flex max-w-6xl flex-col justify-between gap-10 sm:flex-row">
-        <div>
-          <div className="flex items-center gap-2">
-            <TypeMateLogo className="h-8 w-8" />
-            <span className="text-[17px] font-bold tracking-tight">
-              TypeMate
-            </span>
-          </div>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
-            Fast, private dictation that types into any app. Everything runs
-            on your machine.
-          </p>
+      <div className="mx-auto max-w-6xl">
+        <div className="flex items-center gap-2">
+          <TypeMateLogo className="h-8 w-8" />
+          <span className="text-[17px] font-bold tracking-tight">
+            TypeMate
+          </span>
         </div>
-        <div className="sm:text-right">
-          <h3 className="text-sm font-bold">Product</h3>
-          <ul className="mt-3 flex flex-col gap-2.5">
-            {productLinks.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+          Fast, private dictation that types into any app. Everything runs
+          on your machine.
+        </p>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-6xl items-center justify-between border-t border-edge pt-7">
+      <div className="mx-auto mt-10 flex max-w-6xl items-center justify-between border-t border-edge pt-7">
         <a
           href="https://www.codewalnut.com"
           target="_blank"
