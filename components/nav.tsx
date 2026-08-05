@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
+import { TypeMateLogo } from "./logo";
 
 const links = [
   { href: "#how", label: "How it works" },
@@ -28,10 +29,8 @@ export function Nav() {
       className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md"
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-accent text-white">
-            <MicGlyph />
-          </span>
+        <a href="#top" className="flex items-center gap-2">
+          <TypeMateLogo className="h-9 w-9" />
           <span className="text-[17px] font-bold tracking-tight">
             TypeMate
           </span>
@@ -58,20 +57,6 @@ export function Nav() {
         </a>
       </nav>
     </motion.header>
-  );
-}
-
-export function MicGlyph({ className = "h-4 w-4" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" />
-      <path
-        d="M5 11a7 7 0 0 0 14 0M12 18v3"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
   );
 }
 

@@ -7,7 +7,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import { useRef } from "react";
-import { MicGlyph } from "./nav";
+import { OverlayPill } from "./overlay-pill";
 
 const steps = [
   {
@@ -131,23 +131,11 @@ function StepVisual({ progress }: { progress: MotionValue<number> }) {
       </VisualPane>
 
       <VisualPane progress={progress} index={1}>
-        <div className="flex flex-col items-center gap-5">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white shadow-[0_0_40px_rgba(91,108,255,0.5)]">
-            <MicGlyph className="h-5 w-5" />
+        <div className="flex flex-col items-center gap-6">
+          <OverlayPill message="TypeMate is listening..." />
+          <span className="text-sm text-muted">
+            The overlay never steals focus
           </span>
-          <span className="flex h-10 items-center gap-1">
-            {Array.from({ length: 21 }).map((_, i) => (
-              <span
-                key={i}
-                className="wave-bar h-full"
-                style={{
-                  animationDelay: `${(i % 7) * 0.13}s`,
-                  opacity: 0.4 + 0.6 * Math.sin((i / 20) * Math.PI),
-                }}
-              />
-            ))}
-          </span>
-          <span className="text-sm text-muted">Overlay never steals focus</span>
         </div>
       </VisualPane>
 

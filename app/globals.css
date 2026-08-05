@@ -69,24 +69,6 @@ body {
   }
 }
 
-/* Waveform bars in the listening pill */
-.wave-bar {
-  width: 3px;
-  border-radius: 999px;
-  background: var(--accent-bright);
-  animation: wave 1.1s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    transform: scaleY(0.35);
-  }
-  50% {
-    transform: scaleY(1);
-  }
-}
-
 /* Pulsing ring around the live mic dot */
 .pulse-ring {
   animation: pulse-ring 1.8s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;

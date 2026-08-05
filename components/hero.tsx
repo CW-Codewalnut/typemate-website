@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { MicGlyph } from "./nav";
+import { OverlayPill } from "./overlay-pill";
 import { RELEASES_URL } from "@/lib/releases";
 
 export function Hero() {
@@ -159,7 +159,7 @@ const scenes: Scene[] = [
   },
 ];
 
-type Phase = "hold" | "listen" | "type" | "done";
+type Phase = "hold" | "listen" | "transcribe" | "type" | "done";
 
 function DictationDemo() {
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -170,9 +170,11 @@ function DictationDemo() {
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     if (phase === "hold") {
-      timer = setTimeout(() => setPhase("listen"), 900);
+      timer = setTimeout(() => setPhase("listen"), 1100);
     } else if (phase === "listen") {
-      timer = setTimeout(() => setPhase("type"), 1600);
+      timer = setTimeout(() => setPhase("transcribe"), 1900);
+    } else if (phase === "transcribe") {
+      timer = setTimeout(() => setPhase("type"), 950);
     } else if (phase === "type") {
       if (typed.length < scene.text.length) {
         timer = setTimeout(
@@ -213,54 +215,31 @@ function DictationDemo() {
         >
           <span>{typed}</span>
           {phase === "type" && <span className="caret ml-0.5" />}
-          {phase !== "type" && typed.length === 0 && (
+          {phase === "hold" && typed.length === 0 && (
             <span className="text-muted/50">
-              {phase === "hold" ? "Click here, then hold the shortcut..." : "Listening..."}
+              Cursor in the field, hold the shortcut...
             </span>
           )}
         </div>
 
+        {/* The real overlay: appears while listening and transcribing,
+            then hides before the text is typed, exactly like the app. */}
         <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
-          <motion.div
-            layout
-            className="flex items-center gap-3 rounded-full border border-edge bg-raised/95 px-5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.45)]"
-          >
-            {phase === "hold" ? (
-              <span className="flex items-center gap-2 text-[13px] text-muted">
-                Hold <span className="kbd">Ctrl</span>
-                <span className="text-muted/60">+</span>
-                <span className="kbd">Win</span> to talk
-              </span>
-            ) : phase === "listen" ? (
-              <>
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="pulse-ring absolute h-full w-full rounded-full bg-accent-bright" />
-                  <span className="relative h-2.5 w-2.5 rounded-full bg-accent-bright" />
-                </span>
-                <span className="flex h-5 items-center gap-[3px]">
-                  {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-                    <span
-                      key={i}
-                      className="wave-bar h-full"
-                      style={{ animationDelay: `${i * 0.12}s` }}
-                    />
-                  ))}
-                </span>
-                <span className="text-[13px] font-medium text-foreground">
-                  Listening
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-white">
-                  <MicGlyph className="h-3 w-3" />
-                </span>
-                <span className="text-[13px] font-medium text-foreground">
-                  {phase === "type" ? "Typing into the focused field" : "Done in 1.2s"}
-                </span>
-              </>
-            )}
-          </motion.div>
+          {phase === "hold" ? (
+            <div className="flex items-center gap-2 rounded-full border border-edge bg-raised/95 px-5 py-2.5 text-[13px] text-muted shadow-[0_8px_28px_rgba(0,0,0,0.45)]">
+              Hold <span className="kbd">Ctrl</span>
+              <span className="text-muted/60">+</span>
+              <span className="kbd">Win</span> to talk
+            </div>
+          ) : phase === "listen" || phase === "transcribe" ? (
+            <OverlayPill
+              message={
+                phase === "listen"
+                  ? "TypeMate is listening..."
+                  : "Transcribing locally..."
+              }
+            />
+          ) : null}
         </div>
       </div>
     </div>
