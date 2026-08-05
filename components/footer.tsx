@@ -27,7 +27,7 @@ function SocialLink({
 export function Footer() {
   return (
     <footer className="border-t border-edge px-5 pt-14 pb-8">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
         <div className="flex items-center gap-2">
           <TypeMateLogo className="h-8 w-8" />
           <span className="text-[17px] font-bold tracking-tight">
