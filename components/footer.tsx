@@ -72,11 +72,18 @@ export function Footer() {
             Built by
           </span>
           <Image
+            src="/codewalnut-logo-black.svg"
+            alt="CodeWalnut"
+            width={117}
+            height={46}
+            className="h-7 w-auto dark:hidden"
+          />
+          <Image
             src="/codewalnut-logo.svg"
             alt="CodeWalnut"
             width={125}
             height={49}
-            className="cw-logo h-7 w-auto"
+            className="hidden h-7 w-auto dark:block"
           />
         </a>
         <div className="flex items-center gap-3">

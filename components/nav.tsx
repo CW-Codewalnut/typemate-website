@@ -2,7 +2,7 @@
 
 import { useScroll, useMotionValueEvent } from "motion/react";
 import { useTheme } from "next-themes";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { TypeMateLogo } from "./logo";
 
 const links = [
@@ -16,7 +16,28 @@ const links = [
 export function Nav() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
+
+  // Scroll spy: the section crossing the middle band of the viewport
+  // highlights its nav link.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-35% 0px -60% 0px" },
+    );
+    for (const l of links) {
+      const el = document.getElementById(l.href.slice(1));
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header
@@ -33,12 +54,16 @@ export function Nav() {
             TypeMate
           </span>
         </a>
-        <div className="hidden items-center gap-7 text-sm text-muted md:flex">
+        <div className="hidden items-center gap-7 text-sm md:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="transition-colors hover:text-foreground"
+              className={`transition-colors hover:text-foreground ${
+                active === l.href.slice(1)
+                  ? "font-semibold text-accent"
+                  : "text-muted"
+              }`}
             >
               {l.label}
             </a>

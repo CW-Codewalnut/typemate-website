@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* Light: editorial paper-and-ink. */
 :root {
   --background: #F6F3EB;
@@ -148,11 +150,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-}
-
-/* The CodeWalnut logo asset is white text; invert it on light pages. */
-:root:not([data-theme="dark"]) .cw-logo {
-  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Long-form legal/support pages */
