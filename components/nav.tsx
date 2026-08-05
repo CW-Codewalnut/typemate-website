@@ -2,7 +2,8 @@
 
 import { useScroll, useMotionValueEvent } from "motion/react";
 import { useTheme } from "next-themes";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
 import { TypeMateLogo } from "./logo";
 
 const links = [
@@ -90,6 +91,7 @@ const emptySubscribe = () => () => {};
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   // False during SSR and hydration, true after: safe theme-icon rendering.
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -97,11 +99,49 @@ function ThemeToggle() {
     () => false,
   );
 
+  const toggleTheme = () => {
+    const next = resolvedTheme === "dark" ? "light" : "dark";
+
+    // Browsers without the View Transitions API switch instantly.
+    if (!document.startViewTransition) {
+      setTheme(next);
+      return;
+    }
+
+    const rect = buttonRef.current?.getBoundingClientRect();
+    const x = rect ? rect.left + rect.width / 2 : window.innerWidth;
+    const y = rect ? rect.top + rect.height / 2 : 0;
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
+    const transition = document.startViewTransition(() => {
+      flushSync(() => setTheme(next));
+    });
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${radius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 550,
+          easing: "cubic-bezier(0.3, 0, 0.2, 1)",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      );
+    });
+  };
+
   return (
     <button
+      ref={buttonRef}
       type="button"
       aria-label="Toggle light or dark theme"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      onClick={toggleTheme}
       className="flex h-9 w-9 items-center justify-center rounded-full border border-edge bg-surface text-muted transition-colors hover:border-accent/50 hover:text-foreground"
     >
       {!mounted ? (

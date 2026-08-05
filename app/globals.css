@@ -68,6 +68,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Theme toggle: circular reveal via the View Transitions API. The new
+   theme expands from the toggle button; the keyframes are driven from
+   JS so the circle can start at the button's position. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
