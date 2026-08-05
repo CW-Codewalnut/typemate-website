@@ -57,7 +57,7 @@ export function Downloads() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <Reveal>
             <div className="flex h-full flex-col rounded-[22px] border border-accent/40 bg-surface p-7 shadow-[0_0_60px_rgba(91,108,255,0.12)]">
               <h3 className="text-lg font-bold">Windows</h3>
@@ -69,27 +69,38 @@ export function Downloads() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.08}>
             <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
               <h3 className="text-lg font-bold">Linux</h3>
               <p className="mt-1 mb-6 text-sm text-muted">X11 desktops, x64</p>
               <div className="mt-auto flex flex-col gap-2.5">
                 <AssetLink asset={release?.deb} label="Debian, Ubuntu (.deb)" primary />
-                <AssetLink asset={release?.rpm} label="Fedora, openSUSE (.rpm)" />
+                <AssetLink asset={release?.rpm} label="Fedora, SUSE (.rpm)" />
                 <AssetLink asset={release?.tarball} label="Portable (.tar.gz)" />
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal delay={0.16}>
             <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
-              <h3 className="text-lg font-bold">More platforms</h3>
+              <h3 className="text-lg font-bold">macOS</h3>
               <p className="mt-1 mb-6 text-sm text-muted">
-                Early builds, rough edges expected
+                Early preview build
               </p>
               <div className="mt-auto flex flex-col gap-2.5">
-                <AssetLink asset={release?.macos} label="macOS preview (.zip)" />
-                <AssetLink asset={release?.apk} label="Android (.apk)" />
+                <AssetLink asset={release?.macos} label="Preview (.zip)" primary />
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.24}>
+            <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
+              <h3 className="text-lg font-bold">Android</h3>
+              <p className="mt-1 mb-6 text-sm text-muted">
+                Floating mic, DeX ready
+              </p>
+              <div className="mt-auto flex flex-col gap-2.5">
+                <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
               </div>
             </div>
           </Reveal>
