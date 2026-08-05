@@ -22,10 +22,10 @@ export function Android() {
       <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
         <div>
           <Reveal>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
-              Android
+            <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
+              04 — Android
             </p>
-            <h2 className="max-w-xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+            <h2 className="max-w-xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
               The same dictation, in your pocket
             </h2>
             <p className="mt-5 max-w-xl text-lg text-muted">
@@ -37,7 +37,7 @@ export function Android() {
             {points.map((p, i) => (
               <Reveal key={p.title} delay={0.08 * (i + 1)}>
                 <div className="flex gap-4">
-                  <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft font-mono text-[13px] text-accent-bright">
+                  <span className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft font-mono text-[13px] text-accent">
                     {i + 1}
                   </span>
                   <div>
@@ -53,7 +53,7 @@ export function Android() {
           <Reveal delay={0.35}>
             <a
               href="#download"
-              className="mt-10 inline-block rounded-[14px] border border-edge bg-raised px-6 py-3 font-semibold transition hover:border-accent/50"
+              className="mt-10 inline-block rounded-[10px] border border-edge bg-white px-6 py-3 font-semibold transition hover:border-accent/50"
             >
               Get the APK below
             </a>

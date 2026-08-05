@@ -1,9 +1,9 @@
 /* The real TypeMate logo (assets/typemate_logo.svg in the app repo).
-   The mic stand is navy in the original; on this dark site it is
-   repainted light so the mark stays legible. */
+   The mic stand defaults to the original navy for the light paper
+   pages; dark surfaces (the footer) pass a light stand explicitly. */
 export function TypeMateLogo({
   className = "h-8 w-8",
-  standColor = "#e8ebf5",
+  standColor = "#0d1b3c",
   barColor = "#5b6cff",
 }: {
   className?: string;

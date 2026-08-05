@@ -8,6 +8,10 @@ export type ScenePhase = "hold" | "listen" | "transcribe" | "type" | "done";
 
 export type SceneProps = { typed: string; phase: ScenePhase };
 
+/* The site theme's caret is dark ink-blue; inside these dark app
+   miniatures it must stay light to remain visible. */
+const darkCaret = { "--caret-color": "#7C8AFF" } as React.CSSProperties;
+
 function TypedText({
   typed,
   phase,
@@ -28,7 +32,10 @@ function TypedText({
 /* Claude Code: dark terminal, coral spark, bordered prompt box. */
 export function ClaudeCodeScene({ typed, phase }: SceneProps) {
   return (
-    <div className="flex h-full flex-col bg-[#121212] px-4 py-3 font-mono text-[12px] leading-relaxed sm:px-5">
+    <div
+      style={darkCaret}
+      className="flex h-full flex-col bg-[#121212] px-4 py-3 font-mono text-[12px] leading-relaxed sm:px-5"
+    >
       <div className="text-[#d97757]">
         ✻ Claude Code
         <span className="ml-2 text-white/25">~/typemate</span>
@@ -55,7 +62,7 @@ export function ClaudeCodeScene({ typed, phase }: SceneProps) {
    message box, dim editor, blue status bar. */
 export function VSCodeScene({ typed, phase }: SceneProps) {
   return (
-    <div className="flex h-full flex-col bg-[#181818] text-[11px]">
+    <div style={darkCaret} className="flex h-full flex-col bg-[#181818] text-[11px]">
       <div className="flex min-h-0 flex-1">
         <div className="flex w-9 shrink-0 flex-col items-center gap-4 border-r border-white/10 pt-3 text-white/35">
           <span>⧉</span>
@@ -116,7 +123,7 @@ export function VSCodeScene({ typed, phase }: SceneProps) {
 /* Slack: aubergine sidebar, #eng channel, toolbar input. */
 export function SlackScene({ typed, phase }: SceneProps) {
   return (
-    <div className="flex h-full bg-[#1a1d21] text-[11.5px]">
+    <div style={darkCaret} className="flex h-full bg-[#1a1d21] text-[11.5px]">
       <div className="hidden w-40 shrink-0 flex-col bg-[#19171d] p-3 sm:flex">
         <div className="mb-3 text-[12.5px] font-bold text-white">
           CodeWalnut ▾
@@ -197,7 +204,7 @@ export function NotesScene({ typed, phase }: SceneProps) {
 /* WhatsApp: dark chat, teal outgoing bubble, round green action. */
 export function WhatsAppScene({ typed, phase }: SceneProps) {
   return (
-    <div className="flex h-full flex-col bg-[#0b141a] text-[11.5px]">
+    <div style={darkCaret} className="flex h-full flex-col bg-[#0b141a] text-[11.5px]">
       <div className="flex items-center gap-2.5 bg-[#202c33] px-4 py-2">
         <span className="h-7 w-7 rounded-full bg-gradient-to-br from-[#00a884] to-[#1164a3]" />
         <div>

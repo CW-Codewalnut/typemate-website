@@ -20,10 +20,8 @@ function PlatformRow({
   return (
     <Reveal delay={delay}>
       <div
-        className={`flex flex-col gap-5 rounded-[22px] border bg-surface p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
-          highlight
-            ? "border-accent/40 shadow-[0_0_60px_rgba(91,108,255,0.12)]"
-            : "border-edge"
+        className={`flex flex-col gap-5 rounded-[16px] border bg-white p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
+          highlight ? "border-accent/50" : "border-edge"
         }`}
       >
         <div className="shrink-0 md:w-52">
@@ -50,15 +48,15 @@ function AssetLink({
   return (
     <a
       href={asset?.url ?? RELEASES_URL}
-      className={`flex w-full items-center justify-between gap-3 rounded-[14px] px-4 py-3 text-sm font-medium transition sm:w-60 ${
+      className={`flex w-full items-center justify-between gap-3 rounded-[10px] px-4 py-3 text-sm font-medium transition sm:w-60 ${
         primary
-          ? "bg-accent text-white hover:bg-accent-bright"
-          : "border border-edge bg-raised hover:border-accent/50"
+          ? "bg-[#171A26] text-[#F6F3EB] hover:bg-black"
+          : "border border-edge bg-white hover:border-accent/50"
       }`}
     >
       <span>{label}</span>
       <span
-        className={`whitespace-nowrap ${primary ? "text-white/70" : "text-muted"}`}
+        className={`whitespace-nowrap font-mono text-[12px] ${primary ? "text-[#F6F3EB]/70" : "text-muted"}`}
       >
         {asset ? `${asset.sizeMb} MB` : "→"}
       </span>
@@ -71,19 +69,15 @@ export function Downloads() {
 
   return (
     <section id="download" className="relative overflow-hidden px-5 py-28">
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-1/2 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/12 blur-[140px]"
-      />
       <div className="relative mx-auto max-w-6xl">
         <Reveal className="text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
-            Download
+          <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
+            05 — Download
           </p>
-          <h2 className="text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+          <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Get TypeMate{" "}
             {release ? (
-              <span className="text-accent-bright">{release.version}</span>
+              <span className="text-accent">{release.version}</span>
             ) : null}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted">

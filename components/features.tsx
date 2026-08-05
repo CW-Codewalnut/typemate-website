@@ -102,10 +102,10 @@ export function Features() {
     <section id="features" className="relative px-5 py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
-            Why TypeMate
+          <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
+            02 — Why TypeMate
           </p>
-          <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+          <h2 className="max-w-2xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Built for people who type for a living
           </h2>
           <p className="mt-5 max-w-2xl text-lg text-muted">
@@ -118,8 +118,11 @@ export function Features() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <Reveal key={f.title} delay={(i % 3) * 0.1}>
-              <div className="group h-full rounded-[22px] border border-edge bg-surface p-7 transition-colors duration-300 hover:border-accent/40 hover:bg-raised">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[13px] bg-accent-soft text-accent-bright">
+              <div className="group relative h-full rounded-[14px] border border-edge bg-white p-7 transition-colors duration-300 hover:border-[rgba(23,26,38,0.4)]">
+                <span className="absolute right-6 top-6 font-mono text-[12px] text-muted">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[10px] bg-accent-soft text-accent">
                   {f.icon}
                 </span>
                 <h3 className="mt-4 text-lg font-bold tracking-tight">

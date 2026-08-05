@@ -31,7 +31,7 @@ export function LegalPage({
         </div>
       </header>
       <article className="legal mx-auto max-w-3xl px-5 pt-14 pb-24">
-        <h1 className="text-4xl font-extrabold tracking-[-0.03em]">{title}</h1>
+        <h1 className="font-serif text-4xl font-semibold tracking-tight">{title}</h1>
         <p className="!mt-3 text-sm">Last updated: {updated}</p>
         {children}
       </article>

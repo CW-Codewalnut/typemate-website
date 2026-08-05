@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08090f;
-  --surface: #0e1019;
-  --surface-raised: #131624;
-  --border: rgba(148, 163, 210, 0.14);
-  --foreground: #e8ebf5;
-  --muted: #9299b0;
-  --accent: #5b6cff;
-  --accent-bright: #7c8aff;
-  --accent-soft: rgba(91, 108, 255, 0.14);
-  --success: #34d399;
+  --background: #F6F3EB;
+  --surface: #FFFFFF;
+  --surface-raised: #FDFBF5;
+  --border: rgba(23, 26, 38, 0.16);
+  --foreground: #171A26;
+  --muted: #5D6170;
+  --accent: #4B63DC;
+  --accent-bright: #3A50C4;
+  --accent-soft: rgba(75, 99, 220, 0.10);
+  --success: #16A34A;
+  --caret-color: #3A50C4;
 }
 
 @theme inline {
@@ -26,6 +27,7 @@
   --color-success: var(--success);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
+  --font-serif: var(--font-fraunces);
 }
 
 html {
@@ -40,26 +42,27 @@ body {
 }
 
 ::selection {
-  background: rgba(91, 108, 255, 0.35);
+  background: rgba(75, 99, 220, 0.22);
 }
 
 /* Faint dot grid behind the hero */
 .dot-grid {
   background-image: radial-gradient(
-    rgba(148, 163, 210, 0.13) 1px,
+    rgba(23, 26, 38, 0.14) 1px,
     transparent 1px
   );
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, black 30%, transparent 75%);
 }
 
-/* Blinking caret for the typing demo */
+/* Blinking caret for the typing demo. Dark app scenes override
+   --caret-color inline so the caret stays visible on dark chrome. */
 .caret {
   display: inline-block;
   width: 2px;
   height: 1.15em;
   vertical-align: text-bottom;
-  background: var(--accent-bright);
+  background: var(--caret-color, #3A50C4);
   animation: caret-blink 1s steps(1) infinite;
 }
 
@@ -160,10 +163,10 @@ body {
 .kbd {
   font-family: var(--font-jetbrains), monospace;
   font-size: 0.8em;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(23, 26, 38, 0.3);
   border-bottom-width: 2px;
   border-radius: 7px;
   padding: 0.2em 0.55em;
-  background: var(--surface-raised);
+  background: #ffffff;
   color: var(--foreground);
 }

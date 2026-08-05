@@ -35,10 +35,10 @@ export function HowItWorks() {
     <section id="how" ref={ref} className="relative h-[340vh]">
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-5">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
-            How it works
+          <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
+            01 — How it works
           </p>
-          <h2 className="max-w-xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+          <h2 className="max-w-xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Three moves. Zero friction.
           </h2>
 
@@ -92,14 +92,14 @@ function StepRow({
     <motion.div style={{ opacity, x }} className="relative rounded-2xl p-5">
       <motion.span
         style={{ scaleY: barScale }}
-        className="absolute top-4 bottom-4 left-0 w-[3px] origin-top rounded-full bg-accent-bright"
+        className="absolute top-4 bottom-4 left-0 w-[3px] origin-top rounded-full bg-accent"
       />
       <div className="flex items-baseline gap-4">
-        <span className="font-mono text-sm text-accent-bright">
+        <span className="font-mono text-sm text-accent">
           0{index + 1}
         </span>
         <div>
-          <h3 className="text-xl font-bold tracking-tight">{title}</h3>
+          <h3 className="font-serif text-xl font-semibold tracking-tight">{title}</h3>
           <p className="mt-2 max-w-md leading-relaxed text-muted">{body}</p>
         </div>
       </div>
@@ -109,7 +109,7 @@ function StepRow({
 
 function StepVisual({ progress }: { progress: MotionValue<number> }) {
   return (
-    <div className="relative hidden h-72 items-center justify-center rounded-[22px] border border-edge bg-surface/80 lg:flex">
+    <div className="relative hidden h-72 items-center justify-center rounded-[16px] border border-edge bg-white lg:flex">
       <VisualPane progress={progress} index={0}>
         <div className="flex items-center gap-3 text-2xl">
           <motion.span
@@ -140,12 +140,15 @@ function StepVisual({ progress }: { progress: MotionValue<number> }) {
       </VisualPane>
 
       <VisualPane progress={progress} index={2}>
-        <div className="w-4/5 rounded-xl border border-edge bg-raised p-5 font-mono text-sm leading-relaxed">
-          <span className="text-muted/60">$ </span>
+        <div
+          style={{ "--caret-color": "#7C8AFF" } as React.CSSProperties}
+          className="w-4/5 rounded-xl bg-[#171A26] p-5 font-mono text-sm leading-relaxed text-[#e8ebf5]"
+        >
+          <span className="text-[#e8ebf5]/50">$ </span>
           ship the overlay fix and rerun the desktop suite
           <span className="caret ml-1" />
-          <div className="mt-4 flex items-center gap-2 text-[12px] text-success">
-            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+          <div className="mt-4 flex items-center gap-2 text-[12px] text-[#4ade80]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4ade80]" />
             transcribed locally in 1.1s
           </div>
         </div>

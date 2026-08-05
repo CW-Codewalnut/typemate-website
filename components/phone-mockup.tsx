@@ -64,17 +64,20 @@ export function PhoneMockup() {
   const active = phase === "listen" || phase === "transcribe";
 
   return (
-    <div className="relative h-[540px] w-[270px] rounded-[38px] border border-edge bg-surface p-3 shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
-      <div className="relative flex h-full w-full flex-col overflow-hidden rounded-[28px] bg-raised">
+    <div className="relative h-[540px] w-[270px] rounded-[38px] border border-edge bg-[#171A26] p-3 shadow-[0_24px_60px_rgba(23,26,38,0.18)]">
+      <div
+        style={{ "--caret-color": "#7C8AFF" } as React.CSSProperties}
+        className="relative flex h-full w-full flex-col overflow-hidden rounded-[28px] bg-[#131624]"
+      >
         {/* status bar */}
-        <div className="flex items-center justify-between px-5 pt-3 text-[10px] text-muted">
+        <div className="flex items-center justify-between px-5 pt-3 text-[10px] text-[#9299b0]">
           <span>9:41</span>
-          <span className="h-4 w-14 rounded-full bg-surface" />
+          <span className="h-4 w-14 rounded-full bg-[#0e1019]" />
         </div>
 
         {/* chat area */}
         <div className="flex flex-1 flex-col justify-end gap-2.5 px-4 pb-3">
-          <div className="max-w-[80%] self-start rounded-2xl rounded-bl-md bg-surface px-3.5 py-2 text-[12.5px] text-muted">
+          <div className="max-w-[80%] self-start rounded-2xl rounded-bl-md bg-[#0e1019] px-3.5 py-2 text-[12.5px] text-[#9299b0]">
             Standup notes ready?
           </div>
           <div className="max-w-[85%] self-end rounded-2xl rounded-br-md bg-accent px-3.5 py-2 text-[12.5px] text-white">
@@ -83,14 +86,14 @@ export function PhoneMockup() {
         </div>
 
         {/* input row: dictated text lands here */}
-        <div className="mx-3 mb-4 flex items-center gap-2 rounded-full bg-surface px-4 py-2.5">
+        <div className="mx-3 mb-4 flex items-center gap-2 rounded-full bg-[#0e1019] px-4 py-2.5">
           {typed.length > 0 ? (
-            <span className="flex-1 truncate text-[12px] text-foreground">
+            <span className="flex-1 truncate text-[12px] text-[#e8ebf5]">
               {typed}
               {phase === "type" && <span className="caret ml-0.5 !h-[0.95em]" />}
             </span>
           ) : (
-            <span className="flex-1 text-[12px] text-muted/60">Message</span>
+            <span className="flex-1 text-[12px] text-[#9299b0]/60">Message</span>
           )}
         </div>
 

@@ -16,12 +16,12 @@ export function Nav() {
   const bg = useTransform(
     scrollY,
     [0, 80],
-    ["rgba(8, 9, 15, 0)", "rgba(8, 9, 15, 0.82)"],
+    ["rgba(246, 243, 235, 0)", "rgba(246, 243, 235, 0.85)"],
   );
   const borderColor = useTransform(
     scrollY,
     [0, 80],
-    ["rgba(148, 163, 210, 0)", "rgba(148, 163, 210, 0.14)"],
+    ["rgba(23, 26, 38, 0)", "rgba(23, 26, 38, 0.16)"],
   );
 
   return (
@@ -31,7 +31,7 @@ export function Nav() {
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <a href="#top" className="flex items-center gap-2">
-          <TypeMateLogo className="h-9 w-9" />
+          <TypeMateLogo className="h-9 w-9" standColor="#0d1b3c" />
           <span className="text-[17px] font-bold tracking-tight">
             TypeMate
           </span>
@@ -51,7 +51,7 @@ export function Nav() {
           href="https://github.com/CW-Codewalnut/typemate"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-2 rounded-full border border-edge bg-raised px-4 py-1.5 text-sm font-medium transition-colors hover:border-accent/50"
+          className="flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50"
         >
           <GitHubGlyph />
           GitHub

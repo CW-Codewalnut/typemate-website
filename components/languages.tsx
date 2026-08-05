@@ -45,8 +45,8 @@ function ChipRow({ items, reverse }: { items: string[]; reverse?: boolean }) {
           key={`${lang}-${i}`}
           className={`whitespace-nowrap rounded-full border px-5 py-2 text-sm font-medium ${
             highlighted.has(lang)
-              ? "border-accent/50 bg-accent-soft text-accent-bright"
-              : "border-edge bg-surface text-muted"
+              ? "border-accent/40 bg-accent-soft text-accent"
+              : "border-edge bg-white text-muted"
           }`}
         >
           {lang}
@@ -61,10 +61,10 @@ export function Languages() {
     <section id="languages" className="relative overflow-hidden py-28">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
-            Languages
+          <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
+            03 — Languages
           </p>
-          <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+          <h2 className="max-w-2xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             28 languages. One model each, picked on merit.
           </h2>
           <p className="mt-5 max-w-2xl text-lg text-muted">
