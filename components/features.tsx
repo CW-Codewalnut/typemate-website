@@ -44,8 +44,26 @@ const features = [
         <path d="M4 7V5.5A1.5 1.5 0 0 1 5.5 4H7M17 4h1.5A1.5 1.5 0 0 1 20 5.5V7M20 17v1.5a1.5 1.5 0 0 1-1.5 1.5H17M7 20H5.5A1.5 1.5 0 0 1 4 18.5V17M12 8.5v7M9.5 8.5h5M9.5 15.5h5" />
       </Icon>
     ),
-    title: "Types into anything",
+    title: "Works in any app",
     body: "IDE, terminal, browser, chat, AI agent prompt. Whatever field has focus receives the text directly, no copy-paste dance.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="M4 21v-5M4 12V3M12 21v-9M12 8V3M20 21v-3M20 14V3M2 16h4M10 12h4M18 18h4" />
+      </Icon>
+    ),
+    title: "Noise suppression built in",
+    body: "A local denoiser cleans up fans, keyboards, and background chatter before transcription, so accuracy holds up outside quiet rooms.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="M4 20V10M9.5 20V4M15 20v-7M20.5 20V8" />
+      </Icon>
+    ),
+    title: "Insights, kept local",
+    body: "Words dictated, speed, streaks, and a daily activity heatmap. Computed on your device like everything else, never reported anywhere.",
   },
   {
     icon: (
