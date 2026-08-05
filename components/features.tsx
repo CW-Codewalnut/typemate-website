@@ -1,0 +1,120 @@
+import { Reveal } from "./reveal";
+import type { ReactNode } from "react";
+
+function Icon({ children }: { children: ReactNode }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-6 w-6"
+      aria-hidden
+    >
+      {children}
+    </svg>
+  );
+}
+
+const features = [
+  {
+    icon: (
+      <Icon>
+        <rect x="4" y="10" width="16" height="10" rx="2.5" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2.5" />
+      </Icon>
+    ),
+    title: "Private by design",
+    body: "Every word is transcribed on your own CPU. Audio never leaves your machine, and there are no accounts, uploads, or cloud APIs in the path.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12L13 2Z" />
+      </Icon>
+    ),
+    title: "Fast where it counts",
+    body: "English is powered by NVIDIA Parakeet running in-process. A spoken sentence lands as text in about a second on an ordinary laptop.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="M4 7V5.5A1.5 1.5 0 0 1 5.5 4H7M17 4h1.5A1.5 1.5 0 0 1 20 5.5V7M20 17v1.5a1.5 1.5 0 0 1-1.5 1.5H17M7 20H5.5A1.5 1.5 0 0 1 4 18.5V17M12 8.5v7M9.5 8.5h5M9.5 15.5h5" />
+      </Icon>
+    ),
+    title: "Types into anything",
+    body: "IDE, terminal, browser, chat, AI agent prompt. Whatever field has focus receives the text directly, no copy-paste dance.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z" />
+        <circle cx="12" cy="12" r="2.5" />
+        <path d="M5 19 19 5" />
+      </Icon>
+    ),
+    title: "A truly quiet overlay",
+    body: "The listening indicator is built to never take input focus. Your cursor stays in your work while you talk, which is the whole point.",
+  },
+  {
+    icon: (
+      <Icon>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3.5 12h17M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z" />
+      </Icon>
+    ),
+    title: "28 languages, curated",
+    body: "English plus 24 European languages, and dedicated fine-tuned models for Hindi, Hinglish, and Tamil. Every language ships only after it proves itself.",
+  },
+  {
+    icon: (
+      <Icon>
+        <path d="m8.5 8.5-4 3.5 4 3.5M15.5 8.5l4 3.5-4 3.5M13.2 6l-2.4 12" />
+      </Icon>
+    ),
+    title: "Free and open source",
+    body: "Apache 2.0 licensed and developed in the open. Read the code, file issues, or build it yourself.",
+  },
+];
+
+export function Features() {
+  return (
+    <section id="features" className="relative px-5 py-28">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-bright">
+            Why TypeMate
+          </p>
+          <h2 className="max-w-2xl text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+            Built for people who type for a living
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg text-muted">
+            Prompting agents, writing commits, replying in chat. Speaking is
+            faster than typing, and TypeMate makes it feel native to the
+            desktop.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f, i) => (
+            <Reveal key={f.title} delay={(i % 3) * 0.1}>
+              <div className="group h-full rounded-[22px] border border-edge bg-surface p-7 transition-colors duration-300 hover:border-accent/40 hover:bg-raised">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-[13px] bg-accent-soft text-accent-bright">
+                  {f.icon}
+                </span>
+                <h3 className="mt-4 text-lg font-bold tracking-tight">
+                  {f.title}
+                </h3>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-muted">
+                  {f.body}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
