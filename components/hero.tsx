@@ -3,6 +3,14 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { OverlayPill } from "./overlay-pill";
+import {
+  ClaudeCodeScene,
+  NotesScene,
+  SlackScene,
+  VSCodeScene,
+  WhatsAppScene,
+  type SceneProps,
+} from "./demo-scenes";
 import { RELEASES_URL } from "@/lib/releases";
 
 export function Hero() {
@@ -126,7 +134,7 @@ type Scene = {
   app: string;
   hint: string;
   text: string;
-  mono?: boolean;
+  Scene: (props: SceneProps) => React.ReactNode;
 };
 
 const scenes: Scene[] = [
@@ -134,28 +142,31 @@ const scenes: Scene[] = [
     app: "Claude Code",
     hint: "prompt",
     text: "Refactor the recorder behind the adapter contract and add tests for the failure path.",
-    mono: true,
+    Scene: ClaudeCodeScene,
   },
   {
     app: "VS Code",
     hint: "commit message",
-    text: "fix: debounce the shortcut poller so release events are never dropped",
-    mono: true,
+    text: "fix: debounce the shortcut poller",
+    Scene: VSCodeScene,
   },
   {
     app: "Slack",
     hint: "message to #eng",
     text: "Overlay fix is up for review, can someone rerun the desktop e2e job?",
+    Scene: SlackScene,
   },
   {
     app: "Notes",
     hint: "Hindi",
     text: "आज की टीम मीटिंग शाम पाँच बजे शुरू होगी",
+    Scene: NotesScene,
   },
   {
     app: "WhatsApp",
     hint: "Hinglish",
     text: "kal ka standup thoda late hoga, sabko bata dena",
+    Scene: WhatsAppScene,
   },
 ];
 
@@ -207,24 +218,12 @@ function DictationDemo() {
         </span>
       </div>
 
-      <div className="relative px-6 pt-6 pb-24 sm:px-8">
-        <div
-          className={`min-h-[76px] text-[15px] leading-relaxed sm:text-base ${
-            scene.mono ? "font-mono text-[13.5px] sm:text-sm" : ""
-          }`}
-        >
-          <span>{typed}</span>
-          {phase === "type" && <span className="caret ml-0.5" />}
-          {phase === "hold" && typed.length === 0 && (
-            <span className="text-muted/50">
-              Cursor in the field, hold the shortcut...
-            </span>
-          )}
-        </div>
+      <div className="relative h-[290px]">
+        <scene.Scene typed={typed} phase={phase} />
 
         {/* The real overlay: appears while listening and transcribing,
             then hides before the text is typed, exactly like the app. */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
+        <div className="pointer-events-none absolute inset-x-0 bottom-5 flex justify-center">
           {phase === "hold" ? (
             <div className="flex items-center gap-2 rounded-full border border-edge bg-raised/95 px-5 py-2.5 text-[13px] text-muted shadow-[0_8px_28px_rgba(0,0,0,0.45)]">
               Hold <span className="kbd">Ctrl</span>
