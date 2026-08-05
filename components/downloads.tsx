@@ -1,7 +1,42 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
 import { RELEASES_URL, useLatestRelease, type ReleaseAsset } from "@/lib/releases";
+
+function PlatformRow({
+  title,
+  subtitle,
+  highlight,
+  delay = 0,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  highlight?: boolean;
+  delay?: number;
+  children: ReactNode;
+}) {
+  return (
+    <Reveal delay={delay}>
+      <div
+        className={`flex flex-col gap-5 rounded-[22px] border bg-surface p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
+          highlight
+            ? "border-accent/40 shadow-[0_0_60px_rgba(91,108,255,0.12)]"
+            : "border-edge"
+        }`}
+      >
+        <div className="shrink-0 md:w-52">
+          <h3 className="text-lg font-bold">{title}</h3>
+          <p className="mt-0.5 text-sm text-muted">{subtitle}</p>
+        </div>
+        <div className="flex flex-1 flex-wrap gap-2.5 md:justify-end">
+          {children}
+        </div>
+      </div>
+    </Reveal>
+  );
+}
 
 function AssetLink({
   asset,
@@ -15,7 +50,7 @@ function AssetLink({
   return (
     <a
       href={asset?.url ?? RELEASES_URL}
-      className={`flex items-center justify-between gap-3 rounded-[14px] px-4 py-3 text-sm font-medium transition ${
+      className={`flex w-full items-center justify-between gap-3 rounded-[14px] px-4 py-3 text-sm font-medium transition sm:w-60 ${
         primary
           ? "bg-accent text-white hover:bg-accent-bright"
           : "border border-edge bg-raised hover:border-accent/50"
@@ -57,53 +92,33 @@ export function Downloads() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <Reveal>
-            <div className="flex h-full flex-col rounded-[22px] border border-accent/40 bg-surface p-7 shadow-[0_0_60px_rgba(91,108,255,0.12)]">
-              <h3 className="text-lg font-bold">Windows</h3>
-              <p className="mt-1 mb-6 text-sm text-muted">Windows 10 and 11, x64</p>
-              <div className="mt-auto flex flex-col gap-2.5">
-                <AssetLink asset={release?.windowsSetup} label="Installer (.exe)" primary />
-                <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
-              </div>
-            </div>
-          </Reveal>
+        <div className="mt-14 flex flex-col gap-4">
+          <PlatformRow
+            title="Windows"
+            subtitle="Windows 10 and 11, x64"
+            highlight
+          >
+            <AssetLink asset={release?.windowsSetup} label="Installer (.exe)" primary />
+            <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
+          </PlatformRow>
 
-          <Reveal delay={0.08}>
-            <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
-              <h3 className="text-lg font-bold">Linux</h3>
-              <p className="mt-1 mb-6 text-sm text-muted">X11 desktops, x64</p>
-              <div className="mt-auto flex flex-col gap-2.5">
-                <AssetLink asset={release?.deb} label="Debian, Ubuntu (.deb)" primary />
-                <AssetLink asset={release?.rpm} label="Fedora, SUSE (.rpm)" />
-                <AssetLink asset={release?.tarball} label="Portable (.tar.gz)" />
-              </div>
-            </div>
-          </Reveal>
+          <PlatformRow title="Linux" subtitle="X11 desktops, x64" delay={0.08}>
+            <AssetLink asset={release?.deb} label="Debian, Ubuntu (.deb)" primary />
+            <AssetLink asset={release?.rpm} label="Fedora, SUSE (.rpm)" />
+            <AssetLink asset={release?.tarball} label="Portable (.tar.gz)" />
+          </PlatformRow>
 
-          <Reveal delay={0.16}>
-            <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
-              <h3 className="text-lg font-bold">macOS</h3>
-              <p className="mt-1 mb-6 text-sm text-muted">
-                Early preview build
-              </p>
-              <div className="mt-auto flex flex-col gap-2.5">
-                <AssetLink asset={release?.macos} label="Preview (.zip)" primary />
-              </div>
-            </div>
-          </Reveal>
+          <PlatformRow title="macOS" subtitle="Early preview build" delay={0.16}>
+            <AssetLink asset={release?.macos} label="Preview (.zip)" primary />
+          </PlatformRow>
 
-          <Reveal delay={0.24}>
-            <div className="flex h-full flex-col rounded-[22px] border border-edge bg-surface p-7">
-              <h3 className="text-lg font-bold">Android</h3>
-              <p className="mt-1 mb-6 text-sm text-muted">
-                Floating mic, DeX ready
-              </p>
-              <div className="mt-auto flex flex-col gap-2.5">
-                <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
-              </div>
-            </div>
-          </Reveal>
+          <PlatformRow
+            title="Android"
+            subtitle="Floating mic, DeX ready"
+            delay={0.24}
+          >
+            <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
+          </PlatformRow>
         </div>
 
         <Reveal delay={0.25} className="mt-8 text-center">

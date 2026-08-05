@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { GitHubGlyph } from "./nav";
 import { TypeMateLogo } from "./logo";
 
@@ -38,6 +39,26 @@ export function Footer() {
           Fast, private dictation that types into any app. Everything runs
           on your machine.
         </p>
+        <div className="mt-5 flex gap-6 text-sm text-muted">
+          <Link
+            href="/privacy"
+            className="transition-colors hover:text-foreground"
+          >
+            Privacy
+          </Link>
+          <Link
+            href="/terms"
+            className="transition-colors hover:text-foreground"
+          >
+            Terms
+          </Link>
+          <Link
+            href="/support"
+            className="transition-colors hover:text-foreground"
+          >
+            Support
+          </Link>
+        </div>
       </div>
 
       <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center gap-6 border-t border-edge pt-7 sm:flex-row sm:justify-between">
