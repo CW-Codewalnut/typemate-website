@@ -53,7 +53,7 @@ export function Android() {
           <Reveal delay={0.35}>
             <a
               href="#download"
-              className="mt-10 inline-block rounded-[10px] border border-edge bg-white px-6 py-3 font-semibold transition hover:border-accent/50"
+              className="mt-10 inline-block rounded-[10px] border border-edge bg-surface px-6 py-3 font-semibold transition hover:border-accent/50"
             >
               Get the APK below
             </a>

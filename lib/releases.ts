@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 export const RELEASES_URL =
   "https://github.com/CW-Codewalnut/typemate/releases/latest";
 
+export const ALL_RELEASES_URL =
+  "https://github.com/CW-Codewalnut/typemate/releases";
+
 export type ReleaseAsset = {
   name: string;
   url: string;

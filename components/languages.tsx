@@ -46,7 +46,7 @@ function ChipRow({ items, reverse }: { items: string[]; reverse?: boolean }) {
           className={`whitespace-nowrap rounded-full border px-5 py-2 text-sm font-medium ${
             highlighted.has(lang)
               ? "border-accent/40 bg-accent-soft text-accent"
-              : "border-edge bg-white text-muted"
+              : "border-edge bg-surface text-muted"
           }`}
         >
           {lang}

@@ -18,7 +18,7 @@ function SocialLink({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.05)] text-[rgba(232,235,245,0.65)] transition-colors hover:text-white"
+      className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-edge bg-surface text-muted transition-colors hover:border-accent/50 hover:text-foreground"
     >
       {children}
     </a>
@@ -27,48 +27,48 @@ function SocialLink({
 
 export function Footer() {
   return (
-    <footer className="bg-[#14161F] px-5 pt-14 pb-8 text-[#e8ebf5]">
+    <footer className="border-t border-edge px-5 pt-14 pb-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center text-center">
         <div className="flex items-center gap-2">
-          <TypeMateLogo className="h-8 w-8" standColor="#e8ebf5" />
-          <span className="text-[17px] font-bold tracking-tight text-white">
+          <TypeMateLogo className="h-8 w-8" standColor="var(--logo-stand)" />
+          <span className="text-[17px] font-bold tracking-tight">
             TypeMate
           </span>
         </div>
-        <p className="mt-3 max-w-xs text-sm leading-relaxed text-[rgba(232,235,245,0.6)]">
+        <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
           Fast, private dictation that types into any app. Everything runs
           on your machine.
         </p>
-        <div className="mt-5 flex gap-6 text-sm text-[rgba(232,235,245,0.6)]">
+        <div className="mt-5 flex gap-6 text-sm text-muted">
           <Link
             href="/privacy"
-            className="transition-colors hover:text-white"
+            className="transition-colors hover:text-foreground"
           >
             Privacy
           </Link>
           <Link
             href="/terms"
-            className="transition-colors hover:text-white"
+            className="transition-colors hover:text-foreground"
           >
             Terms
           </Link>
           <Link
             href="/support"
-            className="transition-colors hover:text-white"
+            className="transition-colors hover:text-foreground"
           >
             Support
           </Link>
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center gap-6 border-t border-[rgba(255,255,255,0.12)] pt-7 sm:flex-row sm:justify-between">
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center gap-6 border-t border-edge pt-7 sm:flex-row sm:justify-between">
         <a
           href="https://www.codewalnut.com"
           target="_blank"
           rel="noreferrer"
           className="flex items-center gap-2.5 opacity-90 transition-opacity hover:opacity-100"
         >
-          <span className="whitespace-nowrap text-[13px] text-[rgba(232,235,245,0.6)]">
+          <span className="whitespace-nowrap text-[13px] text-muted">
             Built by
           </span>
           <Image
@@ -76,7 +76,7 @@ export function Footer() {
             alt="CodeWalnut"
             width={125}
             height={49}
-            className="h-7 w-auto"
+            className="cw-logo h-7 w-auto"
           />
         </a>
         <div className="flex items-center gap-3">

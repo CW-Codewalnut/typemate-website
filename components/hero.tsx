@@ -38,7 +38,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-7 flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-1.5 text-[13px] font-medium text-foreground"
+          className="mb-7 flex items-center gap-2 rounded-full border border-edge bg-surface px-4 py-1.5 text-[13px] font-medium text-foreground"
         >
           <span className="relative flex h-2 w-2">
             <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-success" />
@@ -78,7 +78,7 @@ export function Hero() {
         >
           <a
             href="#download"
-            className="rounded-[10px] bg-[#171A26] px-7 py-3.5 font-semibold text-[#F6F3EB] transition hover:bg-black"
+            className="rounded-[10px] bg-cta px-7 py-3.5 font-semibold text-cta-foreground transition hover:bg-cta-hover"
           >
             Download free
           </a>
@@ -86,9 +86,9 @@ export function Hero() {
             href={RELEASES_URL}
             target="_blank"
             rel="noreferrer"
-            className="rounded-[10px] border border-edge bg-white px-7 py-3.5 font-semibold transition hover:border-accent/50"
+            className="rounded-[10px] border border-edge bg-surface px-7 py-3.5 font-semibold transition hover:border-accent/50"
           >
-            All releases
+            Latest release
           </a>
         </motion.div>
 
@@ -192,7 +192,7 @@ function DictationDemo() {
   }, [phase, typed, scene.text]);
 
   return (
-    <div className="overflow-hidden rounded-[16px] border border-edge bg-white shadow-[0_2px_24px_rgba(23,26,38,0.08)]">
+    <div className="overflow-hidden rounded-[16px] border border-edge bg-surface shadow-[0_2px_24px_rgba(23,26,38,0.08)]">
       <div className="flex items-center gap-2 border-b border-edge px-5 py-3.5">
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]/70" />
         <span className="h-3 w-3 rounded-full bg-[#febc2e]/70" />
@@ -211,7 +211,7 @@ function DictationDemo() {
             then hides before the text is typed, exactly like the app. */}
         <div className="pointer-events-none absolute inset-x-0 bottom-5 flex justify-center">
           {phase === "hold" ? (
-            <div className="flex items-center gap-2 rounded-full border border-edge bg-white px-5 py-2.5 text-[13px] text-foreground shadow-[0_4px_18px_rgba(23,26,38,0.12)]">
+            <div className="flex items-center gap-2 rounded-full border border-edge bg-surface px-5 py-2.5 text-[13px] text-foreground shadow-[0_4px_18px_rgba(23,26,38,0.12)]">
               Hold <span className="kbd">Ctrl</span>
               <span className="text-muted/60">+</span>
               <span className="kbd">Win</span> to talk

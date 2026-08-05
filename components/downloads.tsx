@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
-import { RELEASES_URL, useLatestRelease, type ReleaseAsset } from "@/lib/releases";
+import { ALL_RELEASES_URL, RELEASES_URL, useLatestRelease, type ReleaseAsset } from "@/lib/releases";
 
 function PlatformRow({
   title,
@@ -20,7 +20,7 @@ function PlatformRow({
   return (
     <Reveal delay={delay}>
       <div
-        className={`flex flex-col gap-5 rounded-[16px] border bg-white p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
+        className={`flex flex-col gap-5 rounded-[16px] border bg-surface p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
           highlight ? "border-accent/50" : "border-edge"
         }`}
       >
@@ -50,13 +50,13 @@ function AssetLink({
       href={asset?.url ?? RELEASES_URL}
       className={`flex w-full items-center justify-between gap-3 rounded-[10px] px-4 py-3 text-sm font-medium transition sm:w-60 ${
         primary
-          ? "bg-[#171A26] text-[#F6F3EB] hover:bg-black"
-          : "border border-edge bg-white hover:border-accent/50"
+          ? "bg-cta text-cta-foreground hover:bg-cta-hover"
+          : "border border-edge bg-surface hover:border-accent/50"
       }`}
     >
       <span>{label}</span>
       <span
-        className={`whitespace-nowrap font-mono text-[12px] ${primary ? "text-[#F6F3EB]/70" : "text-muted"}`}
+        className={`whitespace-nowrap font-mono text-[12px] ${primary ? "text-cta-foreground/70" : "text-muted"}`}
       >
         {asset ? `${asset.sizeMb} MB` : "→"}
       </span>
@@ -117,7 +117,7 @@ export function Downloads() {
 
         <Reveal delay={0.25} className="mt-8 text-center">
           <a
-            href={RELEASES_URL}
+            href={ALL_RELEASES_URL}
             target="_blank"
             rel="noreferrer"
             className="text-sm text-muted underline-offset-4 transition-colors hover:text-foreground hover:underline"

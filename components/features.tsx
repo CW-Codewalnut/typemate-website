@@ -118,7 +118,7 @@ export function Features() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <Reveal key={f.title} delay={(i % 3) * 0.1}>
-              <div className="group relative h-full rounded-[14px] border border-edge bg-white p-7 transition-colors duration-300 hover:border-[rgba(23,26,38,0.4)]">
+              <div className="group relative h-full rounded-[14px] border border-edge bg-surface p-7 transition-colors duration-300 hover:border-edge-strong">
                 <span className="absolute right-6 top-6 font-mono text-[12px] text-muted">
                   {String(i + 1).padStart(2, "0")}
                 </span>

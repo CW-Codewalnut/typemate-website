@@ -109,7 +109,7 @@ function StepRow({
 
 function StepVisual({ progress }: { progress: MotionValue<number> }) {
   return (
-    <div className="relative hidden h-72 items-center justify-center rounded-[16px] border border-edge bg-white lg:flex">
+    <div className="relative hidden h-72 items-center justify-center rounded-[16px] border border-edge bg-surface lg:flex">
       <VisualPane progress={progress} index={0}>
         <div className="flex items-center gap-3 text-2xl">
           <motion.span

@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+/* Light: editorial paper-and-ink. */
 :root {
   --background: #F6F3EB;
   --surface: #FFFFFF;
   --surface-raised: #FDFBF5;
   --border: rgba(23, 26, 38, 0.16);
+  --edge-strong: rgba(23, 26, 38, 0.4);
   --foreground: #171A26;
   --muted: #5D6170;
   --accent: #4B63DC;
@@ -12,6 +14,32 @@
   --accent-soft: rgba(75, 99, 220, 0.10);
   --success: #16A34A;
   --caret-color: #3A50C4;
+  --cta: #171A26;
+  --cta-foreground: #F6F3EB;
+  --cta-hover: #000000;
+  --dot-color: rgba(23, 26, 38, 0.14);
+  --logo-stand: #0d1b3c;
+}
+
+/* Dark: the original ink-and-indigo look. */
+[data-theme="dark"] {
+  --background: #08090f;
+  --surface: #0e1019;
+  --surface-raised: #131624;
+  --border: rgba(148, 163, 210, 0.14);
+  --edge-strong: rgba(148, 163, 210, 0.4);
+  --foreground: #e8ebf5;
+  --muted: #9299b0;
+  --accent: #5b6cff;
+  --accent-bright: #7c8aff;
+  --accent-soft: rgba(91, 108, 255, 0.14);
+  --success: #34d399;
+  --caret-color: #7c8aff;
+  --cta: #5b6cff;
+  --cta-foreground: #ffffff;
+  --cta-hover: #7c8aff;
+  --dot-color: rgba(148, 163, 210, 0.13);
+  --logo-stand: #e8ebf5;
 }
 
 @theme inline {
@@ -19,12 +47,16 @@
   --color-surface: var(--surface);
   --color-raised: var(--surface-raised);
   --color-edge: var(--border);
+  --color-edge-strong: var(--edge-strong);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-bright: var(--accent-bright);
   --color-accent-soft: var(--accent-soft);
   --color-success: var(--success);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-cta-hover: var(--cta-hover);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
   --font-serif: var(--font-fraunces);
@@ -42,15 +74,12 @@ body {
 }
 
 ::selection {
-  background: rgba(75, 99, 220, 0.22);
+  background: rgba(91, 108, 255, 0.3);
 }
 
 /* Faint dot grid behind the hero */
 .dot-grid {
-  background-image: radial-gradient(
-    rgba(23, 26, 38, 0.14) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, black 30%, transparent 75%);
 }
@@ -121,6 +150,11 @@ body {
   }
 }
 
+/* The CodeWalnut logo asset is white text; invert it on light pages. */
+:root:not([data-theme="dark"]) .cw-logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 /* Long-form legal/support pages */
 .legal h2 {
   margin-top: 2.5rem;
@@ -152,7 +186,7 @@ body {
 }
 
 .legal a {
-  color: var(--accent-bright);
+  color: var(--accent);
   text-underline-offset: 4px;
 }
 
@@ -163,10 +197,10 @@ body {
 .kbd {
   font-family: var(--font-jetbrains), monospace;
   font-size: 0.8em;
-  border: 1px solid rgba(23, 26, 38, 0.3);
+  border: 1px solid var(--edge-strong);
   border-bottom-width: 2px;
   border-radius: 7px;
   padding: 0.2em 0.55em;
-  background: #ffffff;
+  background: var(--surface);
   color: var(--foreground);
 }

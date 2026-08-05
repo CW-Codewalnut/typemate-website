@@ -1,6 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { useScroll, useMotionValueEvent } from "motion/react";
+import { useTheme } from "next-themes";
+import { useState, useSyncExternalStore } from "react";
 import { TypeMateLogo } from "./logo";
 
 const links = [
@@ -13,25 +15,20 @@ const links = [
 
 export function Nav() {
   const { scrollY } = useScroll();
-  const bg = useTransform(
-    scrollY,
-    [0, 80],
-    ["rgba(246, 243, 235, 0)", "rgba(246, 243, 235, 0.85)"],
-  );
-  const borderColor = useTransform(
-    scrollY,
-    [0, 80],
-    ["rgba(23, 26, 38, 0)", "rgba(23, 26, 38, 0.16)"],
-  );
+  const [scrolled, setScrolled] = useState(false);
+  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
 
   return (
-    <motion.header
-      style={{ backgroundColor: bg, borderColor }}
-      className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
+        scrolled
+          ? "border-edge bg-background/85"
+          : "border-transparent bg-transparent"
+      }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <a href="#top" className="flex items-center gap-2">
-          <TypeMateLogo className="h-9 w-9" standColor="#0d1b3c" />
+          <TypeMateLogo className="h-9 w-9" standColor="var(--logo-stand)" />
           <span className="text-[17px] font-bold tracking-tight">
             TypeMate
           </span>
@@ -47,17 +44,71 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <a
-          href="https://github.com/CW-Codewalnut/typemate"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 rounded-full border border-edge bg-white px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50"
-        >
-          <GitHubGlyph />
-          GitHub
-        </a>
+        <div className="flex items-center gap-2.5">
+          <ThemeToggle />
+          <a
+            href="https://github.com/CW-Codewalnut/typemate"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-full border border-edge bg-surface px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50"
+          >
+            <GitHubGlyph />
+            GitHub
+          </a>
+        </div>
       </nav>
-    </motion.header>
+    </header>
+  );
+}
+
+const emptySubscribe = () => () => {};
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  // False during SSR and hydration, true after: safe theme-icon rendering.
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+
+  return (
+    <button
+      type="button"
+      aria-label="Toggle light or dark theme"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-edge bg-surface text-muted transition-colors hover:border-accent/50 hover:text-foreground"
+    >
+      {!mounted ? (
+        <span className="h-4 w-4" />
+      ) : resolvedTheme === "dark" ? (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          className="h-4 w-4"
+          aria-hidden
+        >
+          <circle cx="12" cy="12" r="4.2" />
+          <path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" />
+        </svg>
+      ) : (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-4 w-4"
+          aria-hidden
+        >
+          <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" />
+        </svg>
+      )}
+    </button>
   );
 }
 
