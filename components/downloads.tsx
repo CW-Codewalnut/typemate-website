@@ -81,7 +81,7 @@ export function Downloads() {
       <div className="relative mx-auto max-w-6xl">
         <Reveal className="text-center">
           <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
-            05 — Download
+            05. Download
           </p>
           <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Get TypeMate{" "}
