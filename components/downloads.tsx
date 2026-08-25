@@ -9,28 +9,37 @@ function PlatformRow({
   subtitle,
   highlight,
   delay = 0,
+  note,
   children,
 }: {
   title: string;
   subtitle: string;
   highlight?: boolean;
   delay?: number;
+  note?: ReactNode;
   children: ReactNode;
 }) {
   return (
     <Reveal delay={delay}>
       <div
-        className={`flex flex-col gap-5 rounded-[16px] border bg-surface p-6 sm:p-7 md:flex-row md:items-center md:justify-between ${
+        className={`rounded-[16px] border bg-surface p-6 sm:p-7 ${
           highlight ? "border-accent/50" : "border-edge"
         }`}
       >
-        <div className="shrink-0 md:w-52">
-          <h3 className="text-lg font-bold">{title}</h3>
-          <p className="mt-0.5 text-sm text-muted">{subtitle}</p>
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div className="shrink-0 md:w-52">
+            <h3 className="text-lg font-bold">{title}</h3>
+            <p className="mt-0.5 text-sm text-muted">{subtitle}</p>
+          </div>
+          <div className="flex flex-1 flex-wrap gap-2.5 md:justify-end">
+            {children}
+          </div>
         </div>
-        <div className="flex flex-1 flex-wrap gap-2.5 md:justify-end">
-          {children}
-        </div>
+        {note ? (
+          <p className="mt-5 border-t border-edge pt-4 text-sm text-muted">
+            {note}
+          </p>
+        ) : null}
       </div>
     </Reveal>
   );
@@ -91,9 +100,30 @@ export function Downloads() {
             title="Windows"
             subtitle="Windows 10 and 11, x64"
             highlight
+            note={
+              <>
+                Most people want the installer. The app package (.msix) is
+                the packaged format Windows uses for Store style installs,
+                and Windows only accepts it once our{" "}
+                <a
+                  href={release?.cert?.url ?? RELEASES_URL}
+                  className="underline underline-offset-4 hover:text-foreground"
+                >
+                  signing certificate
+                </a>{" "}
+                is installed. <a
+                  href="/support#msix"
+                  className="underline underline-offset-4 hover:text-foreground"
+                >
+                  How to install it
+                </a>
+                .
+              </>
+            }
           >
             <AssetLink asset={release?.windowsSetup} label="Installer (.exe)" primary />
             <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
+            <AssetLink asset={release?.msix} label="App package (.msix)" />
           </PlatformRow>
 
           <PlatformRow title="Linux" subtitle="X11 desktops, x64" delay={0.08}>

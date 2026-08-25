@@ -63,6 +63,27 @@ export default function SupportPage() {
           for your language is downloaded; the bubble shows the reason on
           screen when something is missing.
         </li>
+        <li id="msix">
+          <strong>Windows: how do I install the .msix package?</strong>{" "}
+          Windows will not install an app package unless it already trusts
+          who signed it, so this takes one extra step the first time.
+          Download{" "}
+          <strong>TypeMate-CodeWalnut-cert.cer</strong> from the same
+          release, right click it, choose &quot;Install Certificate&quot;,
+          pick &quot;Local Machine&quot;, then &quot;Place all
+          certificates in the following store&quot; and choose
+          &quot;Trusted People&quot;. After that, open the .msix and it
+          will install. You only do this once. If you would rather not,
+          use the .exe installer instead, which needs none of this.
+        </li>
+        <li>
+          <strong>Windows: the app package says the microphone is
+          off.</strong> A packaged install gets its own microphone
+          permission, separate from the one you may have already granted.
+          Open Windows Settings, go to Privacy &amp; security, then
+          Microphone, and turn TypeMate on. The app picks it up without a
+          restart.
+        </li>
         <li>
           <strong>Where is my data?</strong> Everything stays on your
           device: transcription happens locally and your dictation history
