@@ -103,7 +103,7 @@ export function Features() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
-            02 — Why TypeMate
+            02. Why TypeMate
           </p>
           <h2 className="max-w-2xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Built for people who type for a living

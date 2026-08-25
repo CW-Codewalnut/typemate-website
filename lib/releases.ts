@@ -23,6 +23,8 @@ export type LatestRelease = {
   tarball?: ReleaseAsset;
   macos?: ReleaseAsset;
   apk?: ReleaseAsset;
+  msix?: ReleaseAsset;
+  cert?: ReleaseAsset;
 };
 
 type ApiAsset = {
@@ -39,6 +41,8 @@ const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
   ["tarball", /linux-x64\.tar\.gz$/],
   ["macos", /macos.*\.zip$/],
   ["apk", /\.apk$/],
+  ["msix", /\.msix$/],
+  ["cert", /\.cer$/],
 ];
 
 export function useLatestRelease(): LatestRelease | null {

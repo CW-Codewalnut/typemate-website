@@ -23,7 +23,7 @@ export function Android() {
         <div>
           <Reveal>
             <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
-              04 — Android
+              04. Android
             </p>
             <h2 className="max-w-xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
               The same dictation, in your pocket

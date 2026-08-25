@@ -36,7 +36,7 @@ export function HowItWorks() {
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden px-5">
         <div className="mx-auto w-full max-w-6xl">
           <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
-            01 — How it works
+            01. How it works
           </p>
           <h2 className="max-w-xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
             Three moves. Zero friction.
