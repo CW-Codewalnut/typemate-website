@@ -40,6 +40,11 @@ const nextConfig: NextConfig = {
         destination: `${assetStoreBaseUrl}/tools/:path*`,
         permanent: false,
       },
+      {
+        source: "/media/:path*",
+        destination: `${assetStoreBaseUrl}/media/:path*`,
+        permanent: false,
+      },
     ]);
   },
 };
