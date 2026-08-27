@@ -90,7 +90,7 @@ export function Downloads() {
             ) : null}
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted">
-            Free, open source, no account needed. Install it, hold the
+            Free, no account needed. Install it, hold the
             shortcut, and start talking.
           </p>
         </Reveal>

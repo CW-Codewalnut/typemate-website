@@ -98,7 +98,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.45 }}
           className="mt-5 text-[13px] text-muted"
         >
-          Free and open source. Available for Windows, Linux, and Android,
+          Free to use. Available for Windows, Linux, and Android,
           with macOS in preview.
         </motion.p>
       </motion.div>
