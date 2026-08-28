@@ -2,11 +2,15 @@
 
 import { useEffect, useState } from "react";
 
+// The app repo went private, so its releases vanished from public view;
+// the public typemate-downloads repo mirrors every release's installers
+// (kept current by the release pipeline) and this page reads it exactly
+// like it read the app repo before.
 export const RELEASES_URL =
-  "https://github.com/CW-Codewalnut/typemate/releases/latest";
+  "https://github.com/CW-Codewalnut/typemate-downloads/releases/latest";
 
 export const ALL_RELEASES_URL =
-  "https://github.com/CW-Codewalnut/typemate/releases";
+  "https://github.com/CW-Codewalnut/typemate-downloads/releases";
 
 export type ReleaseAsset = {
   name: string;
@@ -51,7 +55,7 @@ export function useLatestRelease(): LatestRelease | null {
   useEffect(() => {
     let cancelled = false;
     fetch(
-      "https://api.github.com/repos/CW-Codewalnut/typemate/releases/latest",
+      "https://api.github.com/repos/CW-Codewalnut/typemate-downloads/releases/latest",
     )
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
