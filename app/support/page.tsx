@@ -19,7 +19,7 @@ export default function SupportPage() {
       <p>
         The fastest way to get help is to open an issue on{" "}
         <a
-          href="https://github.com/CW-Codewalnut/typemate/issues"
+          href="https://github.com/CW-Codewalnut/typemate-downloads/issues"
           target="_blank"
           rel="noreferrer"
         >
@@ -96,7 +96,7 @@ export default function SupportPage() {
       <p>
         Ideas are welcome as{" "}
         <a
-          href="https://github.com/CW-Codewalnut/typemate/issues"
+          href="https://github.com/CW-Codewalnut/typemate-downloads/issues"
           target="_blank"
           rel="noreferrer"
         >

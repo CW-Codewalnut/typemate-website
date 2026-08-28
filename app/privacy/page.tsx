@@ -115,7 +115,7 @@ export default function PrivacyPage() {
       <p>
         Questions or concerns? Open an issue on{" "}
         <a
-          href="https://github.com/CW-Codewalnut/typemate/issues"
+          href="https://github.com/CW-Codewalnut/typemate-downloads/issues"
           target="_blank"
           rel="noreferrer"
         >

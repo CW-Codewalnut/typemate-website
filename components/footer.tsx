@@ -87,7 +87,7 @@ export function Footer() {
           />
         </a>
         <div className="flex items-center gap-3">
-          <SocialLink href="https://github.com/CW-Codewalnut/typemate" label="TypeMate on GitHub">
+          <SocialLink href="https://github.com/CW-Codewalnut/typemate-downloads" label="TypeMate on GitHub">
             <GitHubGlyph />
           </SocialLink>
           <SocialLink href="https://www.linkedin.com/company/codewalnut" label="CodeWalnut on LinkedIn">

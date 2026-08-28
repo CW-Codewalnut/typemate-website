@@ -79,7 +79,7 @@ export default function TermsPage() {
         </a>{" "}
         or open an issue on{" "}
         <a
-          href="https://github.com/CW-Codewalnut/typemate/issues"
+          href="https://github.com/CW-Codewalnut/typemate-downloads/issues"
           target="_blank"
           rel="noreferrer"
         >
