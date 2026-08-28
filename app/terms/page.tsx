@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Use" updated="5 August 2026">
+    <LegalPage title="Terms of Use" updated="27 August 2026">
       <p>
         These terms apply to the TypeMate apps for Windows, macOS, Linux, and
         Android, and to the website typemate.codewalnut.com, all provided by{" "}
@@ -20,16 +20,12 @@ export default function TermsPage() {
 
       <h2>License</h2>
       <p>
-        TypeMate is free to use. Its source code is open source under the{" "}
-        <a
-          href="https://github.com/CW-Codewalnut/typemate/blob/main/LICENSE"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Apache License 2.0
-        </a>
-        , which governs your rights to use, modify, and redistribute the
-        code. The TypeMate name and logo remain the property of CodeWalnut.
+        TypeMate is free to use. It is proprietary software owned by
+        CodeWalnut. We grant you a personal, non-transferable right to
+        install and use the app on your devices. You may not copy, modify,
+        redistribute, sell, or reverse engineer the app, except where
+        applicable law allows it despite this restriction. The TypeMate
+        name and logo remain the property of CodeWalnut.
       </p>
 
       <h2>Acceptable use</h2>
@@ -42,16 +38,8 @@ export default function TermsPage() {
       <h2>Third-party components</h2>
       <p>
         TypeMate bundles and downloads open-source components and speech
-        models, each covered by its own license. License details are
-        available in the{" "}
-        <a
-          href="https://github.com/CW-Codewalnut/typemate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          source repository
-        </a>
-        .
+        models, each covered by its own license. Those licenses apply to
+        the respective components, not to TypeMate itself.
       </p>
 
       <h2>No warranty</h2>

@@ -73,13 +73,10 @@ export function Nav() {
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <a
-            href="https://github.com/CW-Codewalnut/typemate"
-            target="_blank"
-            rel="noreferrer"
+            href="#download"
             className="flex items-center gap-2 rounded-full border border-edge bg-surface px-4 py-1.5 text-sm font-medium text-foreground transition-colors hover:border-accent/50"
           >
-            <GitHubGlyph />
-            GitHub
+            Download
           </a>
         </div>
       </nav>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <LegalPage title="Support" updated="5 August 2026">
+    <LegalPage title="Support" updated="27 August 2026">
       <p>
         Need help with TypeMate? Start with the quick answers below; if that
         does not solve it, report the problem and we will look at it.
@@ -94,16 +94,16 @@ export default function SupportPage() {
 
       <h2>Feature requests</h2>
       <p>
-        Ideas are welcome as GitHub issues too. TypeMate is developed in the
-        open, and the{" "}
+        Ideas are welcome as{" "}
         <a
-          href="https://github.com/CW-Codewalnut/typemate"
+          href="https://github.com/CW-Codewalnut/typemate/issues"
           target="_blank"
           rel="noreferrer"
         >
-          roadmap discussions
+          GitHub issues
         </a>{" "}
-        happen there.
+        too. Tell us what you want TypeMate to do and how you would use it;
+        requests like these shape what we build next.
       </p>
     </LegalPage>
   );

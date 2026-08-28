@@ -89,11 +89,12 @@ const features = [
   {
     icon: (
       <Icon>
-        <path d="m8.5 8.5-4 3.5 4 3.5M15.5 8.5l4 3.5-4 3.5M13.2 6l-2.4 12" />
+        <path d="M3.5 3.5h7l10 10-7 7-10-10v-7Z" />
+        <circle cx="7.5" cy="7.5" r="1.2" />
       </Icon>
     ),
-    title: "Free and open source",
-    body: "Apache 2.0 licensed and developed in the open. Read the code, file issues, or build it yourself.",
+    title: "Free to use",
+    body: "No account, no subscription, no usage caps. Install it once and dictate as much as you like.",
   },
 ];
 
