@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" updated="5 August 2026">
+    <LegalPage title="Privacy Policy" updated="3 September 2026">
       <p>
         TypeMate is built by{" "}
         <a href="https://www.codewalnut.com" target="_blank" rel="noreferrer">
@@ -38,7 +38,13 @@ export default function PrivacyPage() {
         <li>
           Speech is transcribed <strong>entirely on your device</strong> by
           speech models running inside the app. Audio is never uploaded
-          anywhere.
+          anywhere, and recordings are deleted as soon as they are
+          transcribed.
+        </li>
+        <li>
+          If a transcription fails, the recording is kept on your device
+          only so you can retry it. It is deleted when you retry, when you
+          clear your history, or automatically after 30 days.
         </li>
         <li>
           Transcripts are typed into the field you are working in and kept
