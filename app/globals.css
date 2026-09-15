@@ -66,6 +66,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Anchor targets stop below the fixed header: one bar on desktop,
+     two rows (bar plus the link row) on small screens. */
+  scroll-padding-top: 6.5rem;
+}
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 4rem;
+  }
 }
 
 /* Theme toggle: circular reveal via the View Transitions API. The new
@@ -209,4 +217,12 @@ body {
   padding: 0.2em 0.55em;
   background: var(--surface);
   color: var(--foreground);
+}
+
+/* A scrollable row with no visible scrollbar (the mobile nav links). */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

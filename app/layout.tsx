@@ -22,11 +22,11 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://typemate.codewalnut.com"),
-  title: "TypeMate: hold a key, speak, and it types",
+  title: "TypeMate: Private Dictation",
   description:
-    "TypeMate is a fast, private dictation app for desktop. Hold a shortcut, speak, release. Your words appear in whatever field has focus. 28 languages, fully local, no cloud.",
+    "TypeMate is a fast, private dictation app for Windows, macOS, Linux, Android and iPhone. Speak, and your words appear in whatever field has focus. 28 languages, fully local, no cloud.",
   openGraph: {
-    title: "TypeMate: hold a key, speak, and it types",
+    title: "TypeMate: Private Dictation",
     description:
       "Fast, private, local dictation for developers and heavy typers. 28 languages. Nothing leaves your machine.",
     url: "https://typemate.codewalnut.com",
