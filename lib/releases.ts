@@ -26,6 +26,7 @@ export type LatestRelease = {
   apk?: ReleaseAsset;
   ipa?: ReleaseAsset;
   msix?: ReleaseAsset;
+  msixArm64?: ReleaseAsset;
   cert?: ReleaseAsset;
 };
 
@@ -43,7 +44,9 @@ const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
   ["macos", /macos.*\.dmg$/],
   ["apk", /\.apk$/],
   ["ipa", /\.ipa$/],
-  ["msix", /\.msix$/],
+  // Two MSIX packages, one per architecture; the suffix tells them apart.
+  ["msix", /-x64\.msix$/],
+  ["msixArm64", /-arm64\.msix$/],
   ["cert", /\.cer$/],
 ];
 

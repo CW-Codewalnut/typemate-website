@@ -137,6 +137,7 @@ export function Downloads() {
               label="Microsoft Store"
             />
             <AssetLink asset={release?.msix} label="App package (.msix)" />
+            <AssetLink asset={release?.msixArm64} label="App package for ARM laptops (.msix)" />
           </PlatformRow>
 
           <PlatformRow title="Linux" subtitle="X11 desktops, x86_64, tested on Debian and Ubuntu" delay={0.08}>
