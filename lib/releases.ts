@@ -20,14 +20,13 @@ export type ReleaseAsset = {
 
 export type LatestRelease = {
   version: string;
-  windowsZip?: ReleaseAsset;
-  windowsArm64Zip?: ReleaseAsset;
   deb?: ReleaseAsset;
   appImage?: ReleaseAsset;
   macos?: ReleaseAsset;
   apk?: ReleaseAsset;
   ipa?: ReleaseAsset;
   msix?: ReleaseAsset;
+  msixArm64?: ReleaseAsset;
   cert?: ReleaseAsset;
 };
 
@@ -38,16 +37,16 @@ type ApiAsset = {
 };
 
 const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
-  // The Setup .exe installers stay on the releases page only; the site
-  // sends Windows users to the Store, the portable zips or the MSIX.
-  ["windowsZip", /windows-x64\.zip$/],
-  ["windowsArm64Zip", /windows-arm64\.zip$/],
+  // Windows on the site is the Store and the MSIX; the Setup .exe stays
+  // on the releases page only and the portable zips are no longer built.
   ["deb", /\.deb$/],
   ["appImage", /\.AppImage$/],
   ["macos", /macos.*\.dmg$/],
   ["apk", /\.apk$/],
   ["ipa", /\.ipa$/],
-  ["msix", /\.msix$/],
+  // Two MSIX packages, one per architecture; the suffix tells them apart.
+  ["msix", /-x64\.msix$/],
+  ["msixArm64", /-arm64\.msix$/],
   ["cert", /\.cer$/],
 ];
 
