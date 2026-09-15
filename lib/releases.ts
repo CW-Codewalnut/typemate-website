@@ -27,6 +27,8 @@ export type LatestRelease = {
   ipa?: ReleaseAsset;
   msix?: ReleaseAsset;
   msixArm64?: ReleaseAsset;
+  windowsSetup?: ReleaseAsset;
+  windowsSetupArm64?: ReleaseAsset;
   cert?: ReleaseAsset;
 };
 
@@ -37,8 +39,10 @@ type ApiAsset = {
 };
 
 const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
-  // Windows on the site is the Store and the MSIX; the Setup .exe stays
-  // on the releases page only and the portable zips are no longer built.
+  // The x64 installer keeps its unsuffixed name; the ARM64 one carries
+  // -arm64, so the x64 pattern is exact and cannot match it.
+  ["windowsSetup", /^TypeMate-Setup-v[0-9.]+\.exe$/],
+  ["windowsSetupArm64", /^TypeMate-Setup-.*-arm64\.exe$/],
   ["deb", /\.deb$/],
   ["appImage", /\.AppImage$/],
   ["macos", /macos.*\.dmg$/],
