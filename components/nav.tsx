@@ -7,10 +7,9 @@ import { flushSync } from "react-dom";
 import { TypeMateLogo } from "./logo";
 
 const links = [
-  { href: "#how", label: "How it works" },
-  { href: "#features", label: "Features" },
-  { href: "#languages", label: "Languages" },
-  { href: "#android", label: "Android" },
+  { href: "#demo", label: "How it works" },
+  { href: "#features", label: "Why TypeMate" },
+  { href: "#languages", label: "Supported languages" },
   { href: "#download", label: "Download" },
 ];
 
@@ -18,6 +17,20 @@ export function Nav() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
+  const mobileRowRef = useRef<HTMLDivElement>(null);
+
+  // Keep the active link in view in the scrollable row without touching
+  // the page's own scroll position.
+  useEffect(() => {
+    const row = mobileRowRef.current;
+    if (!row || !active) return;
+    const link = row.querySelector<HTMLElement>(`[data-section="${active}"]`);
+    if (!link) return;
+    row.scrollTo({
+      left: link.offsetLeft - (row.clientWidth - link.clientWidth) / 2,
+      behavior: "smooth",
+    });
+  }, [active]);
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
 
   // Scroll spy: the section crossing the middle band of the viewport
@@ -80,6 +93,29 @@ export function Nav() {
           </a>
         </div>
       </nav>
+      {/* Small screens: the same links in a row that scrolls sideways, and
+          follows the section the page is on. */}
+      <div
+        ref={mobileRowRef}
+        className="no-scrollbar overflow-x-auto border-t border-edge/60 md:hidden"
+      >
+        <div className="flex w-max items-center gap-6 px-5 py-2.5 text-sm">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              data-section={l.href.slice(1)}
+              className={`whitespace-nowrap transition-colors ${
+                active === l.href.slice(1)
+                  ? "font-semibold text-accent"
+                  : "text-muted"
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </header>
   );
 }

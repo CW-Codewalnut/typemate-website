@@ -62,15 +62,16 @@ export function Languages() {
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <p className="mb-3 font-mono text-sm uppercase tracking-[0.18em] text-accent">
-            03. Languages
+            Supported languages
           </p>
           <h2 className="max-w-2xl font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-            28 languages. One model each, picked on merit.
+            28 languages, each on a model that earned its place.
           </h2>
           <p className="mt-5 max-w-2xl text-lg text-muted">
-            No model picker to fiddle with. TypeMate pairs every language with
-            the best local model it validated for it, including dedicated
-            fine-tunes for Hindi, Hinglish, and Tamil.
+            No model picker to fiddle with. English runs on a model chosen for
+            how it handles accents, Hindi, Hinglish and Tamil on dedicated
+            fine-tunes, and 24 European languages on one multilingual model
+            that recognises the language for you. All local.
           </p>
         </Reveal>
       </div>
