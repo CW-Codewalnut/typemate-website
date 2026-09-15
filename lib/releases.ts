@@ -20,14 +20,13 @@ export type ReleaseAsset = {
 
 export type LatestRelease = {
   version: string;
-  windowsSetup?: ReleaseAsset;
   windowsZip?: ReleaseAsset;
-  windowsArm64Setup?: ReleaseAsset;
   windowsArm64Zip?: ReleaseAsset;
   deb?: ReleaseAsset;
   appImage?: ReleaseAsset;
   macos?: ReleaseAsset;
   apk?: ReleaseAsset;
+  ipa?: ReleaseAsset;
   msix?: ReleaseAsset;
   cert?: ReleaseAsset;
 };
@@ -39,16 +38,15 @@ type ApiAsset = {
 };
 
 const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
-  // The x64 installer keeps its unsuffixed name; the ARM64 one carries
-  // -arm64, so the x64 pattern must not match it.
-  ["windowsSetup", /^TypeMate-Setup-v[0-9.]+\.exe$/],
+  // The Setup .exe installers stay on the releases page only; the site
+  // sends Windows users to the Store, the portable zips or the MSIX.
   ["windowsZip", /windows-x64\.zip$/],
-  ["windowsArm64Setup", /^TypeMate-Setup-.*-arm64\.exe$/],
   ["windowsArm64Zip", /windows-arm64\.zip$/],
   ["deb", /\.deb$/],
   ["appImage", /\.AppImage$/],
-  ["macos", /macos.*\.zip$/],
+  ["macos", /macos.*\.dmg$/],
   ["apk", /\.apk$/],
+  ["ipa", /\.ipa$/],
   ["msix", /\.msix$/],
   ["cert", /\.cer$/],
 ];

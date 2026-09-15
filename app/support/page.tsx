@@ -74,7 +74,8 @@ export default function SupportPage() {
           certificates in the following store&quot; and choose
           &quot;Trusted People&quot;. After that, open the .msix and it
           will install. You only do this once. If you would rather not,
-          use the .exe installer instead, which needs none of this.
+          install TypeMate from the Microsoft Store instead, which needs
+          none of this.
         </li>
         <li>
           <strong>Windows: the app package says the microphone is

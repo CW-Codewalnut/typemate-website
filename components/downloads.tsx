@@ -45,6 +45,22 @@ function PlatformRow({
   );
 }
 
+// A download that is not a release asset: the Microsoft Store listing.
+// Same shape as an asset button, an arrow instead of a size.
+function StoreLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      className="flex w-full items-center justify-between gap-3 rounded-[10px] bg-cta px-4 py-3 text-sm font-medium text-cta-foreground transition hover:bg-cta-hover sm:w-60"
+    >
+      <span>{label}</span>
+      <span className="whitespace-nowrap font-mono text-[12px] text-cta-foreground/70">
+        →
+      </span>
+    </a>
+  );
+}
+
 function AssetLink({
   asset,
   label,
@@ -98,34 +114,16 @@ export function Downloads() {
         <div className="mt-14 flex flex-col gap-4">
           <PlatformRow
             title="Windows"
-            subtitle="Windows 10 and 11, x64"
+            subtitle="Windows 10 and 11, x64 and ARM"
             highlight
-            note={
-              <>
-                Most people want the installer. The app package (.msix) is
-                the packaged format Windows uses for Store style installs,
-                and Windows only accepts it once our{" "}
-                <a
-                  href={release?.cert?.url ?? RELEASES_URL}
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  signing certificate
-                </a>{" "}
-                is installed. <a
-                  href="/support#msix"
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  How to install it
-                </a>
-                .
-              </>
-            }
           >
-            <AssetLink asset={release?.windowsSetup} label="Installer (.exe)" primary />
+            <StoreLink
+              href="https://apps.microsoft.com/detail/9NB95KDB8MDK"
+              label="Microsoft Store"
+            />
             <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
-            <AssetLink asset={release?.msix} label="App package (.msix)" />
-            <AssetLink asset={release?.windowsArm64Setup} label="Installer for ARM laptops (.exe)" />
             <AssetLink asset={release?.windowsArm64Zip} label="Portable for ARM laptops (.zip)" />
+            <AssetLink asset={release?.msix} label="App package (.msix)" />
           </PlatformRow>
 
           <PlatformRow title="Linux" subtitle="X11 desktops, x86_64, tested on Debian and Ubuntu" delay={0.08}>
@@ -133,8 +131,8 @@ export function Downloads() {
             <AssetLink asset={release?.appImage} label="Portable (.AppImage)" />
           </PlatformRow>
 
-          <PlatformRow title="macOS" subtitle="Early preview build" delay={0.16}>
-            <AssetLink asset={release?.macos} label="Preview (.zip)" primary />
+          <PlatformRow title="macOS" subtitle="Early preview build, Apple silicon and Intel" delay={0.16}>
+            <AssetLink asset={release?.macos} label="Disk image (.dmg)" primary />
           </PlatformRow>
 
           <PlatformRow
@@ -143,6 +141,14 @@ export function Downloads() {
             delay={0.24}
           >
             <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
+          </PlatformRow>
+
+          <PlatformRow
+            title="iPhone and iPad"
+            subtitle="Early preview build, not yet signed for the App Store"
+            delay={0.32}
+          >
+            <AssetLink asset={release?.ipa} label="App package (.ipa)" primary />
           </PlatformRow>
         </div>
 
