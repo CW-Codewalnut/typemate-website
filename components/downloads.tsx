@@ -124,12 +124,13 @@ export function Downloads() {
             <AssetLink asset={release?.windowsSetup} label="Installer (.exe)" primary />
             <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
             <AssetLink asset={release?.msix} label="App package (.msix)" />
+            <AssetLink asset={release?.windowsArm64Setup} label="Installer for ARM laptops (.exe)" />
+            <AssetLink asset={release?.windowsArm64Zip} label="Portable for ARM laptops (.zip)" />
           </PlatformRow>
 
-          <PlatformRow title="Linux" subtitle="X11 desktops, x64" delay={0.08}>
+          <PlatformRow title="Linux" subtitle="X11 desktops, x86_64, tested on Debian and Ubuntu" delay={0.08}>
             <AssetLink asset={release?.deb} label="Debian, Ubuntu (.deb)" primary />
-            <AssetLink asset={release?.rpm} label="Fedora, SUSE (.rpm)" />
-            <AssetLink asset={release?.tarball} label="Portable (.tar.gz)" />
+            <AssetLink asset={release?.appImage} label="Portable (.AppImage)" />
           </PlatformRow>
 
           <PlatformRow title="macOS" subtitle="Early preview build" delay={0.16}>
