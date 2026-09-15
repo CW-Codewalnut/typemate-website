@@ -53,7 +53,22 @@ function StoreLink({ href, label }: { href: string; label: string }) {
       href={href}
       className="flex w-full items-center justify-between gap-3 rounded-[10px] bg-cta px-4 py-3 text-sm font-medium text-cta-foreground transition hover:bg-cta-hover sm:w-60"
     >
-      <span>{label}</span>
+      <span className="flex items-center gap-2.5">
+        {/* The Microsoft logo: four squares in the brand colours. */}
+        <svg
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          className="shrink-0"
+        >
+          <rect x="0" y="0" width="7.5" height="7.5" fill="#F25022" />
+          <rect x="8.5" y="0" width="7.5" height="7.5" fill="#7FBA00" />
+          <rect x="0" y="8.5" width="7.5" height="7.5" fill="#00A4EF" />
+          <rect x="8.5" y="8.5" width="7.5" height="7.5" fill="#FFB900" />
+        </svg>
+        {label}
+      </span>
       <span className="whitespace-nowrap font-mono text-[12px] text-cta-foreground/70">
         →
       </span>
@@ -121,8 +136,6 @@ export function Downloads() {
               href="https://apps.microsoft.com/detail/9NB95KDB8MDK"
               label="Microsoft Store"
             />
-            <AssetLink asset={release?.windowsZip} label="Portable (.zip)" />
-            <AssetLink asset={release?.windowsArm64Zip} label="Portable for ARM laptops (.zip)" />
             <AssetLink asset={release?.msix} label="App package (.msix)" />
           </PlatformRow>
 
