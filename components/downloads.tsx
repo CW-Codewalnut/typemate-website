@@ -138,6 +138,8 @@ export function Downloads() {
             />
             <AssetLink asset={release?.msix} label="App package for x86 processors (.msix)" />
             <AssetLink asset={release?.msixArm64} label="App package for ARM processors (.msix)" />
+            <AssetLink asset={release?.windowsSetup} label="Installer for x86 processors (.exe)" />
+            <AssetLink asset={release?.windowsSetupArm64} label="Installer for ARM processors (.exe)" />
           </PlatformRow>
 
           <PlatformRow title="Linux" subtitle="X11 desktops, x86_64, tested on Debian and Ubuntu" delay={0.08}>
