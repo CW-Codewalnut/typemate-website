@@ -136,8 +136,8 @@ export function Downloads() {
               href="https://apps.microsoft.com/detail/9NB95KDB8MDK"
               label="Microsoft Store"
             />
-            <AssetLink asset={release?.msix} label="App package (.msix)" />
-            <AssetLink asset={release?.msixArm64} label="App package for ARM laptops (.msix)" />
+            <AssetLink asset={release?.msix} label="App package for x86 processors (.msix)" />
+            <AssetLink asset={release?.msixArm64} label="App package for ARM processors (.msix)" />
           </PlatformRow>
 
           <PlatformRow title="Linux" subtitle="X11 desktops, x86_64, tested on Debian and Ubuntu" delay={0.08}>
@@ -151,7 +151,7 @@ export function Downloads() {
 
           <PlatformRow
             title="Android"
-            subtitle="Floating mic, DeX ready"
+            subtitle="Floating mic, DeX (desktop mode) ready"
             delay={0.24}
           >
             <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
