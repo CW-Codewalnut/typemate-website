@@ -26,6 +26,7 @@ export type LatestRelease = {
   appImage?: ReleaseAsset;
   macos?: ReleaseAsset;
   apk?: ReleaseAsset;
+  ipa?: ReleaseAsset;
   msix?: ReleaseAsset;
   cert?: ReleaseAsset;
 };
@@ -45,6 +46,7 @@ const matchers: [keyof Omit<LatestRelease, "version">, RegExp][] = [
   ["appImage", /\.AppImage$/],
   ["macos", /macos.*\.dmg$/],
   ["apk", /\.apk$/],
+  ["ipa", /\.ipa$/],
   ["msix", /\.msix$/],
   ["cert", /\.cer$/],
 ];

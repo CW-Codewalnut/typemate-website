@@ -116,28 +116,6 @@ export function Downloads() {
             title="Windows"
             subtitle="Windows 10 and 11, x64 and ARM"
             highlight
-            note={
-              <>
-                Most people want the Microsoft Store: it installs, updates
-                and picks the right build for the machine. The portable zips
-                need no install. The app package (.msix) is the Store
-                format for a direct install, and Windows only accepts it
-                once our{" "}
-                <a
-                  href={release?.cert?.url ?? RELEASES_URL}
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  signing certificate
-                </a>{" "}
-                is installed. <a
-                  href="/support#msix"
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  How to install it
-                </a>
-                .
-              </>
-            }
           >
             <StoreLink
               href="https://apps.microsoft.com/detail/9NB95KDB8MDK"
@@ -163,6 +141,14 @@ export function Downloads() {
             delay={0.24}
           >
             <AssetLink asset={release?.apk} label="Direct install (.apk)" primary />
+          </PlatformRow>
+
+          <PlatformRow
+            title="iPhone and iPad"
+            subtitle="Early preview build, not yet signed for the App Store"
+            delay={0.32}
+          >
+            <AssetLink asset={release?.ipa} label="App package (.ipa)" primary />
           </PlatformRow>
         </div>
 
