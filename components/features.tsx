@@ -63,7 +63,7 @@ const features = [
       </Icon>
     ),
     title: "Insights, kept local",
-    body: "Words dictated, speed, streaks, and a daily activity heatmap. Computed on your device like everything else, never reported anywhere.",
+    body: "Words dictated, the typing time your voice replaced, and the last two weeks day by day. Computed on your device like everything else, never reported anywhere.",
   },
   {
     icon: (
