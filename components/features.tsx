@@ -36,7 +36,7 @@ const features = [
       </Icon>
     ),
     title: "Fast where it counts",
-    body: "English is powered by NVIDIA Parakeet running in-process. A spoken sentence lands as text in about a second on an ordinary laptop.",
+    body: "Every language runs on the most accurate local model available for that language. A spoken English sentence lands as text in about a second on an ordinary laptop.",
   },
   {
     icon: (
