@@ -2,6 +2,7 @@ import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { Features } from "@/components/features";
 import { Languages } from "@/components/languages";
+import { Hinglish } from "@/components/hinglish";
 import { Downloads } from "@/components/downloads";
 import { Footer } from "@/components/footer";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Languages />
+      <Hinglish />
       <Downloads />
       <Footer />
     </main>
